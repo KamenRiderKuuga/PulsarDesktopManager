@@ -2,17 +2,71 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="450"
         x:Class="PulsarDesktopManager.MainWindow"
         Title="PulsarDesktopManager">
-	<StackPanel>
-		<!-- Navigation bar -->
-		<Grid></Grid>
+	<Window.Styles>
 
+		<Style Selector="TabControl">
+			<Setter Property="Background" Value="#F0F0F0"/>
+		</Style>
+		<Style Selector="TabControl WrapPanel">
+			<Setter Property="Background" Value="#2B579A"/>
+		</Style>
+
+		<Style Selector="TabItem">
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="Height" Value="30"/>
+			<Setter Property="MinHeight" Value="30"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Background" Value="#2B579A"/>
+			<Setter Property="Foreground" Value="#F0F0F0"/>
+			<Setter Property="Margin" Value="0 0 0 0"/>
+			<Setter Property="Padding" Value="10 0"/>
+		</Style>
+
+	</Window.Styles>
+	<Grid RowDefinitions="* Auto">
 		<!-- Main area -->
-		<Grid></Grid>
+		<Grid ColumnDefinitions="* 1 3.5*">
+			<Grid RowDefinitions="Auto *">
+				<!-- Filter bar -->
+				<Grid Grid.Row="0" Height="30">
+					<Rectangle Grid.Column="0" Fill="Red"></Rectangle>
+				</Grid>
+			</Grid>
+
+			<TabControl Grid.Column="2">
+				<TabItem Header="Circle" VerticalContentAlignment="Center">
+					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				</TabItem>
+				<TabItem>
+					<TabItem.Header>
+						<TextBlock VerticalAlignment="Center">Triangle</TextBlock>
+					</TabItem.Header>
+					<StackPanel>
+						<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+						<Button>A button in the triangle page !</Button>
+					</StackPanel>
+				</TabItem>
+				<TabItem>
+					<TabItem.Header>
+						<TextBlock VerticalAlignment="Center">Square</TextBlock>
+					</TabItem.Header>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+						<Rectangle Fill="Blue" Width="63" Height="41"/>
+					</StackPanel>
+				</TabItem>
+			</TabControl>
+
+			<!-- Resource tree -->
+			<GridSplitter Grid.Column="1" MinWidth="2" Background="Black" ResizeDirection="Columns"/>
+		</Grid>
 
 		<!-- Bottom bar -->
-		<Grid></Grid>
-	</StackPanel>
+		<Grid Grid.Row="1" Background="White" Height="20">
+			<Label>Status bar</Label>
+		</Grid>
+	</Grid>
 </Window>
