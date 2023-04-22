@@ -38,7 +38,7 @@
 		<Style Selector="TabItem[TabStripPlacement=Left] /template/ Border#PART_SelectedPipe">
 			<Setter Property="IsVisible"  Value="False"/>
 		</Style>
-		
+
 		<Style Selector="#TopTabControl TabItem[TabStripPlacement=Top] /template/ Border#PART_SelectedPipe">
 			<Setter Property="Margin"  Value="0 0 0 5"/>
 		</Style>
@@ -51,6 +51,7 @@
 			<Setter Property="Padding" Value="0 0"/>
 			<Setter Property="Margin" Value="0 0"/>
 			<Setter Property="BorderThickness" Value="0,1,1,1"/>
+			<Setter Property="BorderBrush" Value="#BABFC4"/>
 			<Setter Property="CornerRadius" Value="2"></Setter>
 		</Style>
 	</Window.Styles>
@@ -69,14 +70,14 @@
 				</Grid>
 				<!-- Filter bar -->
 				<TabControl Name="LeftTab" Grid.Row="1" TabStripPlacement="Left" Padding="0 0">
-					<TabItem BorderBrush="#BABFC4">
+					<TabItem>
 						<TabItem.Header>
 							<Grid Width="30" Height="40" Margin="3 5">
 								<Image Source="{SvgImage /Assets/Images/star.svg}"/>
 							</Grid>
 						</TabItem.Header>
 					</TabItem>
-					<TabItem BorderBrush="#BABFC4">
+					<TabItem>
 						<TabItem.Header>
 							<Grid Width="30" Height="40" Margin="3 5">
 								<Image Source="{SvgImage /Assets/Images/list-tree.svg}"/>
@@ -119,11 +120,12 @@
 			</TabControl>
 
 			<!-- Resource tree -->
-			<GridSplitter Grid.Column="1" MinWidth="1" Background="Black" ResizeDirection="Columns"/>
+			<GridSplitter Grid.Column="1" MinWidth="1" Background="#BABFC4" ResizeDirection="Columns"/>
 		</Grid>
 
 		<!-- Bottom bar -->
 		<Grid Grid.Row="1" Background="White" Height="20">
+			<Border BorderThickness="0.5" BorderBrush="#BABFC4"></Border>
 			<Label>Status bar</Label>
 		</Grid>
 	</Grid>
