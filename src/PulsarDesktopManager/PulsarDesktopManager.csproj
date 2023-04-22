@@ -8,10 +8,12 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\Images\home.svg" />
+    <None Remove="Assets\Images\list-tree.svg" />
     <None Remove="Assets\Images\star.svg" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\Images\home.svg" />
+    <AvaloniaResource Include="Assets\Images\list-tree.svg" />
     <AvaloniaResource Include="Assets\Images\star.svg" />
   </ItemGroup>
 

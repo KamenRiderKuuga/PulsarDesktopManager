@@ -6,21 +6,52 @@
         x:Class="PulsarDesktopManager.MainWindow"
         Title="PulsarDesktopManager">
 	<Window.Styles>
-
 		<Style Selector="TextBox">
 			<Setter Property="FontFamily" Value="Microsoft YaHei,Simsun,苹方-简,宋体-简"/>
 		</Style>
 		<Style Selector="TabItem">
 			<Setter Property="FontSize" Value="12"/>
-			<Setter Property="Height" Value="30"/>
-			<Setter Property="MinHeight" Value="30"/>
-			<!--<Setter Property="VerticalAlignment" Value="Center"/>-->
-			<Setter Property="Padding" Value="10 0"/>
+			<Setter Property="Padding" Value="2 0"/>
+		</Style>
+
+		<Style Selector="TabItem:pointerover  /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#D8E8FF"/>
+		</Style>
+
+		<Style Selector="#LeftTab TabItem /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#F0F0F0"/>
+		</Style>
+
+		<Style Selector="#LeftTab TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="White"/>
+		</Style>
+
+		<Style Selector="#LeftTab TabItem:selected">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderThickness" Value="0,0,0,0"/>
+		</Style>
+
+		<Style Selector="TabItem[TabStripPlacement=Left] /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Margin"  Value="0 0 0 0"/>
+		</Style>
+
+		<Style Selector="TabItem[TabStripPlacement=Left] /template/ Border#PART_SelectedPipe">
+			<Setter Property="IsVisible"  Value="False"/>
+		</Style>
+		
+		<Style Selector="#TopTabControl TabItem[TabStripPlacement=Top] /template/ Border#PART_SelectedPipe">
+			<Setter Property="Margin"  Value="0 0 0 5"/>
+		</Style>
+
+		<Style Selector="#TopTabControl /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+			<Setter Property="Height"  Value="40"/>
 		</Style>
 
 		<Style Selector="#LeftTab TabItem">
-			<!--<Setter Property="VerticalAlignment" Value="Center"/>-->
-			<Setter Property="Padding" Value="2 0"/>
+			<Setter Property="Padding" Value="0 0"/>
+			<Setter Property="Margin" Value="0 0"/>
+			<Setter Property="BorderThickness" Value="0,1,1,1"/>
+			<Setter Property="CornerRadius" Value="2"></Setter>
 		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions="* Auto">
@@ -33,38 +64,41 @@
 			</Grid.ColumnDefinitions>
 			<Grid RowDefinitions="Auto *">
 				<!-- Filter bar -->
-				<Grid Grid.Row="0" Height="30" Margin="1 1 1 0">
+				<Grid Grid.Row="0" Height="30" Margin="1 1 1 1">
 					<TextBox Watermark="Quick Filter..." BorderThickness="0"></TextBox>
 				</Grid>
 				<!-- Filter bar -->
-				<TabControl Name="LeftTab" Grid.Row="1" TabStripPlacement="Left">
-					<TabItem>
+				<TabControl Name="LeftTab" Grid.Row="1" TabStripPlacement="Left" Padding="0 0">
+					<TabItem BorderBrush="#BABFC4">
 						<TabItem.Header>
-							<Grid Width="25">
+							<Grid Width="30" Height="40" Margin="3 5">
 								<Image Source="{SvgImage /Assets/Images/star.svg}"/>
 							</Grid>
 						</TabItem.Header>
-						<TabItem.ContextMenu>
-							<ContextMenu>
-								<MenuItem Header="New Connection"/>
-								<MenuItem Header="New Folder"/>
-							</ContextMenu>
-						</TabItem.ContextMenu>
+					</TabItem>
+					<TabItem BorderBrush="#BABFC4">
+						<TabItem.Header>
+							<Grid Width="30" Height="40" Margin="3 5">
+								<Image Source="{SvgImage /Assets/Images/list-tree.svg}"/>
+							</Grid>
+						</TabItem.Header>
 					</TabItem>
 				</TabControl>
 			</Grid>
 
-			<TabControl Grid.Column="2">
+			<TabControl Name="TopTabControl" Grid.Column="2">
 				<TabItem  VerticalContentAlignment="Center">
 					<TabItem.Header>
-						<Grid Width="25">
+						<Grid Width="40" Height="30" Margin="2 2">
 							<Image Source="{SvgImage /Assets/Images/home.svg}"/>
 						</Grid>
 					</TabItem.Header>
 				</TabItem>
 				<TabItem>
 					<TabItem.Header>
-						<TextBlock VerticalAlignment="Center">Triangle</TextBlock>
+						<Grid Height="30" Margin="10 2">
+							<TextBlock VerticalAlignment="Center">Triangle</TextBlock>
+						</Grid>
 					</TabItem.Header>
 					<StackPanel>
 						<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -73,7 +107,9 @@
 				</TabItem>
 				<TabItem>
 					<TabItem.Header>
-						<TextBlock VerticalAlignment="Center">Square</TextBlock>
+						<Grid Height="30" Margin="10 2">
+							<TextBlock VerticalAlignment="Center">Square</TextBlock>
+						</Grid>
 					</TabItem.Header>
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
