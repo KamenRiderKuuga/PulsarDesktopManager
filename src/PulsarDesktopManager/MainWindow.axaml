@@ -7,38 +7,60 @@
         Title="PulsarDesktopManager">
 	<Window.Styles>
 
-		<Style Selector="TabControl">
-			<Setter Property="Background" Value="#F0F0F0"/>
+		<Style Selector="TextBox">
+			<Setter Property="FontFamily" Value="Microsoft YaHei,Simsun,苹方-简,宋体-简"/>
 		</Style>
-		<Style Selector="TabControl WrapPanel">
-			<Setter Property="Background" Value="#2B579A"/>
-		</Style>
-
 		<Style Selector="TabItem">
 			<Setter Property="FontSize" Value="12"/>
 			<Setter Property="Height" Value="30"/>
 			<Setter Property="MinHeight" Value="30"/>
-			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="Background" Value="#2B579A"/>
-			<Setter Property="Foreground" Value="#F0F0F0"/>
-			<Setter Property="Margin" Value="0 0 0 0"/>
+			<!--<Setter Property="VerticalAlignment" Value="Center"/>-->
 			<Setter Property="Padding" Value="10 0"/>
 		</Style>
 
+		<Style Selector="#LeftTab TabItem">
+			<!--<Setter Property="VerticalAlignment" Value="Center"/>-->
+			<Setter Property="Padding" Value="2 0"/>
+		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions="* Auto">
 		<!-- Main area -->
-		<Grid ColumnDefinitions="* 1 3.5*">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" MinWidth="260" />
+				<ColumnDefinition Width="1"/>
+				<ColumnDefinition Width="3.5*"/>
+			</Grid.ColumnDefinitions>
 			<Grid RowDefinitions="Auto *">
 				<!-- Filter bar -->
-				<Grid Grid.Row="0" Height="30">
-					<Rectangle Grid.Column="0" Fill="Red"></Rectangle>
+				<Grid Grid.Row="0" Height="30" Margin="1 1 1 0">
+					<TextBox Watermark="Quick Filter..." BorderThickness="0"></TextBox>
 				</Grid>
+				<!-- Filter bar -->
+				<TabControl Name="LeftTab" Grid.Row="1" TabStripPlacement="Left">
+					<TabItem>
+						<TabItem.Header>
+							<Grid Width="25">
+								<Image Source="{SvgImage /Assets/Images/star.svg}"/>
+							</Grid>
+						</TabItem.Header>
+						<TabItem.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="New Connection"/>
+								<MenuItem Header="New Folder"/>
+							</ContextMenu>
+						</TabItem.ContextMenu>
+					</TabItem>
+				</TabControl>
 			</Grid>
 
 			<TabControl Grid.Column="2">
-				<TabItem Header="Circle" VerticalContentAlignment="Center">
-					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				<TabItem  VerticalContentAlignment="Center">
+					<TabItem.Header>
+						<Grid Width="25">
+							<Image Source="{SvgImage /Assets/Images/home.svg}"/>
+						</Grid>
+					</TabItem.Header>
 				</TabItem>
 				<TabItem>
 					<TabItem.Header>
@@ -61,7 +83,7 @@
 			</TabControl>
 
 			<!-- Resource tree -->
-			<GridSplitter Grid.Column="1" MinWidth="2" Background="Black" ResizeDirection="Columns"/>
+			<GridSplitter Grid.Column="1" MinWidth="1" Background="Black" ResizeDirection="Columns"/>
 		</Grid>
 
 		<!-- Bottom bar -->
